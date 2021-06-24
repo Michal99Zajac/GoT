@@ -14,8 +14,11 @@
 }
 
 .logo {
-  width: 10vw;
+  width: calc(18% - 0.5rem);
   min-width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .children {

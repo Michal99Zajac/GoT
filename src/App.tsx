@@ -1,9 +1,12 @@
 import React, { useReducer } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Layout from './components/layout/layout';
+import { MainLayout } from './components/layout/layout';
 import Navbar from './components/navbar/navbar';
 import Toggle from './components/toggle/toggle';
 import Logo from './components/logo/logo';
+import Houses from './pages/houses/houses';
+import Characters from './pages/characters/characters';
+import NotFound from './pages/404/not-found';
 import ThemeContext from './context/theme-context';
 import { reducer, initialState } from './reducer';
 import './App.css';
@@ -14,16 +17,16 @@ function App() {
 
   const body = (
     <Switch>
-      <Route path='/house/:id' component={() => <h1>house</h1>} />
-      <Route exact path='/' component={() => <h1>characters</h1>}/>
-      <Route component={() => <h1>404</h1>} />
+      <Route path='/houses/:id' component={Houses} />
+      <Route exact path='/' component={Characters}/>
+      <Route component={NotFound} />
     </Switch>
-  )
+  );
   const navbar = (
     <Navbar logo={<Logo to='/'/>}>
       <Toggle onChange={() => dispatch({ ...state, type: 'SET_THEME' })} />
     </Navbar>
-  )
+  );
 
   return (
     <ThemeContext.Provider value={{
@@ -32,7 +35,7 @@ function App() {
     }}>
       <Router>
         <div className={`App background-${state.theme}`}>
-          <Layout
+          <MainLayout
             navbar={navbar}
             body={body}
           />
