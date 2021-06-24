@@ -1,0 +1,28 @@
+.toggle {
+  width: 3.2rem;
+  height: 1.6rem;
+  border-radius: 5rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+  padding: 0.1rem;
+  box-sizing: border-box;
+}
+
+.toggle-on {
+  background-color: #303440;
+  justify-content: flex-start;
+}
+
+.toggle-off {
+  background-color: #C4C4C4;
+  justify-content: flex-end;
+}
+
+.toggleButton {
+  display: block;
+  border-radius: 1rem;
+  height: 1.4rem;
+  width: 1.4rem;
+  background-color: #FFFFFF;
+}
