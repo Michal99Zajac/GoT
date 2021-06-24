@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/layout/layout';
 import Navbar from './components/navbar/navbar';
+import Toggle from './components/toggle/toggle';
 import Logo from './components/logo/logo';
 import ThemeContext from './context/theme-context';
 import { reducer, initialState } from './reducer';
@@ -19,7 +20,9 @@ function App() {
     </Switch>
   )
   const navbar = (
-    <Navbar logo={<Logo to='/'/>}>hello</Navbar>
+    <Navbar logo={<Logo to='/'/>}>
+      <Toggle onChange={() => dispatch({ ...state, type: 'SET_THEME' })} />
+    </Navbar>
   )
 
   return (

@@ -21,4 +21,6 @@
 .children {
   width: max-content;
   min-width: max-content;
+  display: flex;
+  align-items: center;
 }
