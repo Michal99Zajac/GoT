@@ -1,6 +1,4 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import ThemeContext from '../../context/theme-context';
+import React from 'react';
 import styles from './navbar.module.css';
 
 
@@ -12,16 +10,25 @@ interface NavbarProps {
 }
 
 /**
+ * Navbar Component for simple navigation on the app
  * 
+ * - className? (string) - additional class for component
+ * - id? (string) - id of component
+ * - logo (JSX.Element) - logo to be placed on the navbar left side
+ * - children? (any) - elements to be placed on the navbar right side
  */
 export default function Navbar(props: NavbarProps): JSX.Element {
-  const theme = useContext(ThemeContext)
-
   return (
     <header
-      className={`${styles[`navbar-${theme.theme}`]} ${props.className && ''}`}
+      className={`${styles.navbar} ${props.className && ''}`}
       id={props.id}
     >
+      <span className={styles.logo}>
+        {props.logo}
+      </span>
+      <span className={styles.children}>
+        {props.children}
+      </span>
     </header>
   )
 }
