@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/layout/layout';
+import Navbar from './components/navbar/navbar';
 import ThemeContext from './context/theme-context';
 import { reducer, initialState } from './reducer';
 import './App.css';
@@ -16,7 +17,9 @@ function App() {
       <Route component={() => <h1>404</h1>} />
     </Switch>
   )
-  const navbar = <h1>navbar</h1>
+  const navbar = (
+    <Navbar logo={<h1>logo</h1>}>hello</Navbar>
+  )
 
   return (
     <ThemeContext.Provider value={{
