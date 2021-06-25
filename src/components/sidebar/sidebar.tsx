@@ -21,7 +21,7 @@ export default function Sidebar(props: SidebarProps): JSX.Element {
   const theme = useContext(ThemeContext);
 
   return (
-    <div className={`${styles.sidebar} ${styles[`s-${theme.theme}`]} ${props.className && ''}`}>
+    <div className={`${styles.sidebar} ${styles[`s-${theme.theme}`]} ${props.className ?? ''}`}>
       <Textfield
         className={styles.bottomMargin}
         value={filter.culture}
