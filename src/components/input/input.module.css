@@ -1,4 +1,4 @@
-.txtfield {
+.inputDiv {
   width: 100%;
   font-size: 1rem;
   padding: 0;
@@ -38,11 +38,103 @@
   outline: none;
 }
 
+.input::placeholder {
+  color: #b3b3b3;
+}
+
+.input-primary {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+.input-secondary {
+  background-color: #303440;
+  color: #FFFFFF;
+}
+
 .input:focus + .label, .input:enabled:hover + .label {
   background-image: linear-gradient(90deg, #303440, #e2e2e2);
   background-size: 1000% 1000%;
   animation: blizzard ease-in-out 5s infinite;
 }
+
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.arrow {
+  height: 100%;
+  width: 0.8rem;
+  transition: all 0.4s;
+}
+
+.arrow > path {
+  fill: #000000;
+}
+
+.arrowUp {
+  transform: rotate(180deg);
+}
+
+.arrowDown {
+  transform: rotate(0deg);
+}
+
+.options {
+  position: absolute;
+  top: 3rem;
+  left: 0;
+  border-radius: 2px;
+  box-sizing: border-box;
+  padding: 0.1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.options > input {
+  display: none;
+}
+
+.optionsHide {
+  display: none;
+}
+
+.options-primary {
+  background-color: #FFFFFF;
+}
+
+.options-secondary {
+  background-color: #303440;
+}
+
+.options > .radio {
+  width: 100%;
+  text-align: left;
+  padding: 0.2rem;
+  box-sizing: border-box;
+}
+
+.radio-primary:hover {
+  background-color: #dddddd;
+}
+
+.options > input:focus + .radio-primary, .options > input:checked + .radio-primary {
+  background-color: #dddddd;
+} 
+
+.radio-secondary:hover {
+  background-color: #424652;
+}
+
+.options > input:focus + .radio-secondary, .options > input:checked + .radio-secondary {
+  background-color: #424652;
+} 
 
 @keyframes blizzard {
   0% { background-position: 0% 0%; }

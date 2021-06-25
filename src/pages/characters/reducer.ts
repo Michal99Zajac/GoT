@@ -1,6 +1,6 @@
 export interface State {
   culture: string;
-  gender: string;
+  gender: 'any' | 'male' | 'famale';
   pagination: 10 | 25 | 50;
 }
 
@@ -23,6 +23,6 @@ export const reducer = (state: State, action: Action) => {
 
 export const initialState: State = {
   culture: '',
-  gender: '',
+  gender: 'any',
   pagination: 25
 }

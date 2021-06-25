@@ -22,7 +22,7 @@ interface LogoProps {
 export default function Logo(props: LogoProps): JSX.Element {
   return (
     <Link
-      className={`logo ${props.className && ''}`}
+      className={`logo ${props.className ?? ''}`}
       id={props.id}
       to={props.to}
     >

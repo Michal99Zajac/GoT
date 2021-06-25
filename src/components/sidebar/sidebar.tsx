@@ -1,8 +1,7 @@
-import React, { useContext, useMemo } from 'react';
-import { useEffect } from 'react';
+import React, { useContext } from 'react';
 import FilteringContext from '../../context/filtering-context';
 import ThemeContext from '../../context/theme-context';
-import { Textfield } from '../input/input';
+import { Textfield, Select } from '../input/input';
 import styles from './sidebar.module.css';
 
 
@@ -24,10 +23,23 @@ export default function Sidebar(props: SidebarProps): JSX.Element {
   return (
     <div className={`${styles.sidebar} ${styles[`s-${theme.theme}`]} ${props.className && ''}`}>
       <Textfield
+        className={styles.bottomMargin}
         value={filter.culture}
         onChange={e => filter.setCulture(e.target.value)}
         label='culture'
         placeholder='culture'
+      />
+      <Select
+        label='gender'
+        className={styles.bottomMargin}
+        value={filter.gender}
+        onChange={e => filter.setGender(e.target.value)}
+        name='gender'
+        options={[
+          { id: '1', value: 'any' },
+          { id: '2', value: 'male' },
+          { id: '3', value: 'famale' }
+        ]}
       />
     </div>
   );

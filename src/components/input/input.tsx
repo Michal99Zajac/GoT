@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React, { ChangeEvent, useContext, useState } from 'react';
 import ThemeContext from '../../context/theme-context';
+import { ReactComponent as ArrowSvg } from '../../assets/svg/arrow.svg';
 import styles from './input.module.css';
 
 
@@ -12,6 +13,19 @@ interface TextfieldProps {
   onKeyUp?: React.KeyboardEventHandler<HTMLInputElement>;
   type?: 'text';
   label?: string;
+}
+
+interface SelectProps {
+  className?: string;
+  id?: string;
+  value: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  label?: string;
+  name: string;
+  options: {
+    id: string,
+    value: string;
+  }[]
 }
 
 /**
@@ -30,7 +44,7 @@ export function Textfield(props: TextfieldProps): JSX.Element {
 
   return (
     <div
-      className={`${styles.txtfield} ${props.className && ''}`}
+      className={`${styles.inputDiv} ${props.className ?? ''}`}
       id={props.id}
     >
       <input
@@ -50,3 +64,45 @@ export function Textfield(props: TextfieldProps): JSX.Element {
   );
 }
 
+export function Select(props: SelectProps): JSX.Element {
+  const theme = useContext(ThemeContext);
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div
+      className={`${styles.inputDiv} ${props.className ?? ''}`}
+      id={props.id}
+    >
+    <button
+      onClick={() => setIsOpen(!isOpen)}
+      className={`${styles.select} ${styles.input} ${styles[`input-${theme.theme}`]}`}
+    >
+      {props.value}
+      <ArrowSvg className={`${styles.arrow} ${isOpen ? styles.arrowUp : styles.arrowDown}`} />
+      <div className={`${styles.options} ${styles[`options-${theme.theme}`]} ${!isOpen ? styles.optionsHide : ''}`}>
+        { props.options.map(option => (
+          <>
+            <input
+              defaultChecked={option.value === props.value}
+              type='radio'
+              onChange={props.onChange}
+              name={props.name}
+              id={`${option.id}-${props.name}`}
+              value={option.value}
+            />
+            <label
+              className={`${styles.radio} ${styles[`radio-${theme.theme}`]}`}
+              htmlFor={`${option.id}-${props.name}`}
+            >{option.value}</label>
+          </>
+        )) }
+      </div>
+    </button>
+    { props.label &&
+      <label className={`${styles.label} ${styles[`label-${theme.theme}`]}`}>
+        {props.label}
+      </label>
+    }
+    </div>
+  );
+}

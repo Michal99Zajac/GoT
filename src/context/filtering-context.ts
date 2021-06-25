@@ -2,7 +2,7 @@ import React from 'react';
 
 
 interface FilteringContext {
-  gender: string;
+  gender: 'any' | 'male' | 'famale';
   culture: string;
   pagination: number;
   setGender: Function;
@@ -11,7 +11,7 @@ interface FilteringContext {
 }
 
 const filteringContext = React.createContext<FilteringContext>({
-  gender: '',
+  gender: 'any',
   culture: '',
   pagination: 25,
   setGender: () => {},
