@@ -20,7 +20,7 @@ interface NavbarProps {
 export default function Navbar(props: NavbarProps): JSX.Element {
   return (
     <header
-      className={`${styles.navbar} ${props.className && ''}`}
+      className={`${styles.navbar} ${props.className ?? ''}`}
       id={props.id}
     >
       <span className={styles.logo}>

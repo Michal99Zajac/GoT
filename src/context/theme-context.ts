@@ -2,7 +2,7 @@ import React from 'react';
 
 
 interface ThemeContext {
-  theme: 'primary' | 'secondary';
+  theme: string;
   changeTheme: Function;
 }
 

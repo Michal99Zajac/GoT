@@ -27,7 +27,7 @@ export default function Toggle(props: ToggleProps): JSX.Element {
     <div
       onClick={onClick}
       id={props.id}
-      className={`${styles.toggle} ${styles[`toggle-${isOn ? 'on' : 'off'}`]} ${props.className && ''}`}
+      className={`${styles.toggle} ${styles[`toggle-${isOn ? 'on' : 'off'}`]} ${props.className ?? ''}`}
     >
       <span className={styles.toggleButton}></span>
     </div>

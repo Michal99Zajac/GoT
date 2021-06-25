@@ -1,0 +1,174 @@
+.inputDiv {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column-reverse;
+}
+
+.label {
+  display: block;
+  font-family: 'Cardo';
+  padding: 0.1rem 0.4rem;
+  font-family: 'Cardo';
+  border-radius: 2px;
+  margin-bottom: 0.4rem;
+  color: #FFFFFF;
+}
+
+.label-primary {
+  background-color: #303440;
+}
+
+.label-secondary {
+  background-color: #FFFFFF;
+  color: #303440;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1.2rem;
+  font-family: 'Cardo';
+  border: none;
+  border-radius: 2px;
+  margin: 0;
+  padding: 0.2rem 0.3rem;
+  outline: none;
+}
+
+.input::placeholder {
+  color: #b3b3b3;
+}
+
+.input-primary {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+.input-secondary {
+  background-color: #303440;
+  color: #FFFFFF;
+}
+
+.input:focus + .label, .input:enabled:hover + .label {
+  background-image: linear-gradient(90deg, #303440, #e2e2e2);
+  background-size: 1000% 1000%;
+  animation: blizzard ease-in-out 5s infinite;
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.arrow {
+  height: 100%;
+  width: 0.8rem;
+  transition: all 0.4s;
+}
+
+.arrow > path {
+  fill: #000000;
+}
+
+.arrowUp {
+  transform: rotate(180deg);
+}
+
+.arrowDown {
+  transform: rotate(0deg);
+}
+
+.options {
+  position: absolute;
+  top: 3rem;
+  left: 0;
+  border-radius: 2px;
+  box-sizing: border-box;
+  padding: 0.1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.options > input, .radios > input {
+  display: none;
+}
+
+.optionsHide {
+  display: none;
+}
+
+.options-primary {
+  background-color: #FFFFFF;
+}
+
+.options-secondary {
+  background-color: #303440;
+}
+
+.options > .opt {
+  width: 100%;
+  text-align: left;
+  padding: 0.2rem;
+  box-sizing: border-box;
+}
+
+.opt-primary:hover, .radio-primary:hover {
+  background-color: #dddddd;
+}
+
+.options > input:focus + .opt-primary, .options > input:checked + .opt-primary,
+.radios > input:focus + .radio-primary, .radios > input:checked + .radio-primary {
+  background-color: #dddddd;
+} 
+
+.opt-secondary:hover, .radio-secondary:hover {
+  background-color: #424652;
+}
+
+.options > input:focus + .opt-secondary, .options > input:checked + .opt-secondary,
+.radios > input:focus + .radio-secondary, .radios > input:checked + .radio-secondary {
+  background-color: #424652;
+}
+
+.radios {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.radio {
+  margin: 0 0.4rem 0.2rem 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3rem;
+}
+
+
+.radio-primary {
+  background-color: #FFFFFF;
+  color: #000000
+}
+
+.radio-secondary {
+  background-color: #303440;
+  color: #FFFFFF
+}
+
+@keyframes blizzard {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 0%; }
+  100% { background-position: 0% 0% ; }
+}
