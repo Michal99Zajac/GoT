@@ -26,6 +26,8 @@ export default function Sidebar(props: SidebarProps): JSX.Element {
       <Textfield
         value={filter.culture}
         onChange={e => filter.setCulture(e.target.value)}
+        label='culture'
+        placeholder='culture'
       />
     </div>
   );

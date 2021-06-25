@@ -8,6 +8,7 @@ interface TextfieldProps {
   id?: string;
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
+  placeholder?: string;
   onKeyUp?: React.KeyboardEventHandler<HTMLInputElement>;
   type?: 'text';
   label?: string;
@@ -33,10 +34,12 @@ export function Textfield(props: TextfieldProps): JSX.Element {
       id={props.id}
     >
       <input
+        className={`${styles.input} ${styles[`input-${theme.theme}`]}`}
         type={props.type ?? 'text'}
         value={props.value}
         onKeyUp={props.onKeyUp}
         onChange={props.onChange}
+        placeholder={props.placeholder}
       />
       { props.label &&
         <label className={`${styles.label} ${styles[`label-${theme.theme}`]}`}>
