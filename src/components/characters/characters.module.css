@@ -1,9 +1,18 @@
 .characters {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .table {
-  height: 80vh;
+  max-height: 80vh;
+}
+
+.ul {
+  margin: 0;
+  padding: 0;
+}
+
+.ul > li {
+  list-style-type: none;
 }

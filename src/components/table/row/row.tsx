@@ -6,7 +6,7 @@ import styles from '../table.module.css';
 interface RowProps {
   className?: string;
   id?: string;
-  data: string[];
+  data: any[];
 }
 
 export default function Row(props: RowProps): JSX.Element {
