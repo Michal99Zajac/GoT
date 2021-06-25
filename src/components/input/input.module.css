@@ -97,7 +97,7 @@
   width: 100%;
 }
 
-.options > input {
+.options > input, .radios > input {
   display: none;
 }
 
@@ -113,28 +113,59 @@
   background-color: #303440;
 }
 
-.options > .radio {
+.options > .opt {
   width: 100%;
   text-align: left;
   padding: 0.2rem;
   box-sizing: border-box;
 }
 
-.radio-primary:hover {
+.opt-primary:hover, .radio-primary:hover {
   background-color: #dddddd;
 }
 
-.options > input:focus + .radio-primary, .options > input:checked + .radio-primary {
+.options > input:focus + .opt-primary, .options > input:checked + .opt-primary,
+.radios > input:focus + .radio-primary, .radios > input:checked + .radio-primary {
   background-color: #dddddd;
 } 
 
-.radio-secondary:hover {
+.opt-secondary:hover, .radio-secondary:hover {
   background-color: #424652;
 }
 
-.options > input:focus + .radio-secondary, .options > input:checked + .radio-secondary {
+.options > input:focus + .opt-secondary, .options > input:checked + .opt-secondary,
+.radios > input:focus + .radio-secondary, .radios > input:checked + .radio-secondary {
   background-color: #424652;
-} 
+}
+
+.radios {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.radio {
+  margin: 0 0.4rem 0.2rem 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3rem;
+}
+
+
+.radio-primary {
+  background-color: #FFFFFF;
+  color: #000000
+}
+
+.radio-secondary {
+  background-color: #303440;
+  color: #FFFFFF
+}
 
 @keyframes blizzard {
   0% { background-position: 0% 0%; }

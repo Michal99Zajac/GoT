@@ -1,7 +1,7 @@
 export interface State {
   culture: string;
   gender: 'any' | 'male' | 'famale';
-  pagination: 10 | 25 | 50;
+  pagination: '10' | '25' | '50';
 }
 
 export interface Action extends State {
@@ -24,5 +24,5 @@ export const reducer = (state: State, action: Action) => {
 export const initialState: State = {
   culture: '',
   gender: 'any',
-  pagination: 25
+  pagination: '25'
 }

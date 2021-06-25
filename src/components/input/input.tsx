@@ -28,6 +28,19 @@ interface SelectProps {
   }[]
 }
 
+interface RadioProps {
+  className?: string;
+  id?: string;
+  value: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  label?: string;
+  name: string;
+  options: {
+    id: string;
+    value: string;
+  }[]
+}
+
 /**
  * Textfield Component - standard input for entering a value
  * 
@@ -64,6 +77,20 @@ export function Textfield(props: TextfieldProps): JSX.Element {
   );
 }
 
+/**
+ * Select Component - for choose value from options
+ * 
+ * - className? (string) - additional class for component
+ * - id? (string) - id of component
+ * - value (string) - set value
+ * - onChange (React.ChangeEventHandler<HTMLInputElement>) - function for change value
+ * - label? (string) - label of input
+ * - name (string) - name of group of select options
+ * - options ({
+    *  id: string,
+    *  value: string
+ * }[]) - options to choose
+ */
 export function Select(props: SelectProps): JSX.Element {
   const theme = useContext(ThemeContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -91,13 +118,62 @@ export function Select(props: SelectProps): JSX.Element {
               value={option.value}
             />
             <label
-              className={`${styles.radio} ${styles[`radio-${theme.theme}`]}`}
+              className={`${styles.opt} ${styles[`opt-${theme.theme}`]}`}
               htmlFor={`${option.id}-${props.name}`}
             >{option.value}</label>
           </>
         )) }
       </div>
     </button>
+    { props.label &&
+      <label className={`${styles.label} ${styles[`label-${theme.theme}`]}`}>
+        {props.label}
+      </label>
+    }
+    </div>
+  );
+}
+
+/**
+ * Radio Component - for choose value short value from options
+ * 
+ * - className? (string) - additional class for component
+ * - id? (string) - id of component
+ * - value (string) - set short value
+ * - onChange (React.ChangeEventHandler<HTMLInputElement>) - function for change value
+ * - label? (string) - label of input
+ * - name (string) - name of group of select options
+ * - options ({
+    *  id: string,
+    *  value: string
+ * }[]) - options to choose
+ */
+export function Radio(props: RadioProps): JSX.Element {
+  const theme = useContext(ThemeContext);
+
+  return (
+    <div
+      className={`${styles.inputDiv} ${props.className ?? ''}`}
+      id={props.id}
+    >
+    <div className={`${styles.radios}`}>
+      { props.options.map(option => (
+        <>
+          <input
+            defaultChecked={option.value === props.value}
+            type='radio'
+            onChange={props.onChange}
+            name={props.name}
+            id={`${option.id}-${props.name}`}
+            value={option.value}
+          />
+          <label
+            className={`${styles.radio} ${styles[`radio-${theme.theme}`]}`}
+            htmlFor={`${option.id}-${props.name}`}
+          >{option.value}</label>
+        </>
+      )) }
+    </div>
     { props.label &&
       <label className={`${styles.label} ${styles[`label-${theme.theme}`]}`}>
         {props.label}
