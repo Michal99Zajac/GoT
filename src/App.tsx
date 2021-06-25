@@ -30,7 +30,7 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{
-      theme: 'primary',
+      theme: state.theme,
       changeTheme: () => dispatch({ ...state, type: 'SET_THEME' })
     }}>
       <Router>

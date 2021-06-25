@@ -11,3 +11,16 @@
 .background-secondary {
   background-color: #303440;
 }
+
+.fill-all {
+  height: 100%;
+  width: 100%;
+}
+
+.s-primary {
+  background-color: #EDEDED;
+}
+
+.s-secondary {
+  background-color: #11111B;
+}

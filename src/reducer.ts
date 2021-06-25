@@ -1,5 +1,5 @@
 interface State {
-  theme: string | 'primary' | 'secondary';
+  theme: 'priamry' | 'secondary' | string;
 }
 
 interface Action extends State {
