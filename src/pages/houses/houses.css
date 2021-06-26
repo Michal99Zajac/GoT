@@ -1,0 +1,23 @@
+.arms-h1 {
+  font-size: 5rem;
+  font-family: 'Cardo';
+  margin: 0;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.arms-primary {
+  color: #000000;
+}
+
+.arms-secondary {
+  color: #FFFFFF;
+}
+
+.house {
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
