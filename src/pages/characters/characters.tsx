@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import FilteringContext from '../../context/filtering-context';
 import Sidebar from '../../components/sidebar/sidebar';
 import CharactersTable from '../../components/characters/characters';
@@ -22,7 +22,6 @@ export default function Characters(): JSX.Element {
       setPagination: (pagination: '10' | '25' | '50') => 
         dispatch({...state, type: 'SET_PAGINATION', pagination: pagination})
     }}>
-
       <div className='fill-all characters-page'>
         <Sidebar className='grid-sidebar' />
         <CharactersTable className='grid-characters' />

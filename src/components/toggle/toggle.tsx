@@ -5,6 +5,7 @@ import styles from './toggle.module.css';
 interface ToggleProps {
   className?: string;
   id?: string;
+  defaultValue?: boolean;
   onChange: Function;
 }
 
@@ -16,7 +17,7 @@ interface ToggleProps {
  * - onChange (Function) - function to exec after state change
  */
 export default function Toggle(props: ToggleProps): JSX.Element {
-  const [isOn, setIsOne] = useState(true);
+  const [isOn, setIsOne] = useState(props.defaultValue ?? true);
 
   function onClick() {
     setIsOne(!isOn);

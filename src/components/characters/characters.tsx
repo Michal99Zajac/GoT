@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useReducer } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import queryString from 'query-string';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import FilteringContext from '../../context/filtering-context';
+import ThemeContext from '../../context/theme-context';
 import axios from '../../axios';
 import Table from '../table/table';
 import Row from '../table/row/row';
 import { calcAlive } from '../../helpers/calc-alive';
-import { reducer, initialState, Character } from './reducer'
+import { reducer, initialState } from './reducer'
 import styles from './characters.module.css';
 
 
@@ -18,7 +18,7 @@ interface CharactersProps {
 interface RawCharacter {
   url: string;
   aliases: string[];
-  allegiances: [];
+  allegiances: string[];
   culture: string;
   died: string;
   born: string;
@@ -35,9 +35,13 @@ interface RawCharacter {
 export default function Characters(props: CharactersProps): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState);
   const filter = useContext(FilteringContext);
+  const theme = useContext(ThemeContext);
   const history = useHistory();
-  const { page } = queryString.parse(history.location.search || '?page=1')
+  const { page } = useParams<{ page: string }>();
 
+  /**
+   * fetch characters by page, pageSize, gender and culture
+   */
   async function fetchCharacters() {
     dispatch({...state, type: 'SET_LOADING', loading: true});
 
@@ -48,18 +52,18 @@ export default function Characters(props: CharactersProps): JSX.Element {
 
       const characters = res.data.map(c => ({
         id: c.url.split('/').pop() ?? '',
-        name: [c.name, ...c.aliases].join(','),
+        name: [...c.aliases, c.name].filter(e => e !== '').join(', '),
         alive: calcAlive(c.born, c.died),
         gender: c.gender,
         culture: c.culture === '' ? 'Unknown' : c.culture,
-        allegiances: c.allegiances.length == 0 ? 'No allegiances' : c.allegiances
+        allegiances: c.allegiances.length == 0 ? 'No allegiances' : c.allegiances.map(a => `${a.split('/').pop()}`)
       }));
   
       dispatch({
         ...state,
         type: 'SET_CHARACTERS',
         characters: characters
-      })
+      });
 
     } catch (err) {
       console.log(err);
@@ -86,7 +90,11 @@ export default function Characters(props: CharactersProps): JSX.Element {
               c.alive,
               c.gender,
               c.culture,
-              c.allegiances
+              <ul className={styles.ul}>
+                { !Array.isArray(c.allegiances) ? <li>{c.allegiances}</li> : c.allegiances.map(a => (
+                  <Link key={`house-${c.id}-${a}`} className={styles[`link-${theme.theme}`]} to={`/houses/${a}`}><li># {a}</li></Link>
+                ))}
+              </ul>
             ]}
           />
         )) }

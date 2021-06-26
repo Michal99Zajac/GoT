@@ -24,9 +24,11 @@ export const reducer = (state: State, action: Action) => {
   }
 };
 
+const filter = JSON.parse(window.localStorage.getItem('filter') ?? '{}')
+
 export const initialState: State = {
-  culture: '',
-  gender: 'any',
-  pagination: '25',
+  culture: filter.culture ?? '',
+  gender: filter.gender ?? 'any',
+  pagination: filter.pagination ?? '25',
   page: ''
 }
