@@ -14,7 +14,7 @@
 }
 
 .logo {
-  width: calc(18% - 0.5rem);
+  width: auto;
   min-width: max-content;
   display: flex;
   align-items: center;

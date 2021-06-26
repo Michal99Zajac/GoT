@@ -40,10 +40,21 @@ export default function Characters(props: CharactersProps): JSX.Element {
   const theme = useContext(ThemeContext);
   const nav = useContext(NavContext)
   const history = useHistory();
-  let { page } = useParams<{ page: string }>();
+  const { page } = useParams<{ page: string }>();
 
+  /**
+   * parse linkHeader and update nav context
+   */
   function setNav(linkHeader: string) {
-    parseLink(linkHeader);
+    const newNav = parseLink(linkHeader);
+
+    nav.setNav({
+      current: page,
+      next: newNav.next,
+      previous: newNav.previous,
+      last: newNav.last,
+      first: newNav.first
+    })
   }
 
   /**

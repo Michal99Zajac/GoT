@@ -36,14 +36,15 @@ export default function Characters(): JSX.Element {
         <div className='fill-all characters-page'>
           <Sidebar className='grid-sidebar' />
           <CharactersTable className='grid-characters' />
-          <Pagination
-            last={state.nav.last}
-            previous={state.nav.previous}
-            next={state.nav.next}
-            first={state.nav.first}
-            current={state.nav.current}
-            className='grid-pagination'
-          />
+          <div className='grid-pagination'>
+            <Pagination
+              last={state.nav.last}
+              previous={state.nav.previous}
+              next={state.nav.next}
+              first={state.nav.first}
+              current={state.nav.current}
+            />
+          </div>
         </div>
       </NavContext.Provider>
     </FilteringContext.Provider>
