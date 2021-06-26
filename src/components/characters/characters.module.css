@@ -1,0 +1,30 @@
+.characters {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.table {
+  max-height: 80vh;
+}
+
+.ul {
+  margin: 0;
+  padding: 0;
+}
+
+.ul li {
+  list-style-type: none;
+}
+
+.link-primary {
+  color: #1353b3;
+}
+
+.link-secondary {
+  color: #6ea8ff;
+}
+
+.link-primary:hover, .link-secondary:hover {
+  text-decoration: underline;
+}

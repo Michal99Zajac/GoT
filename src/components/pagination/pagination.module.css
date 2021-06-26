@@ -1,0 +1,64 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+}
+
+.link {
+  padding: 0.6rem 0.8rem;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Cardo';
+}
+
+.link:hover {
+  cursor: pointer;
+}
+
+.link:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.link:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.link-primary {
+  background-color: #EDEDED;
+  color: #11111B;
+}
+
+.link-secondary {
+  background-color: #11111B;
+  color: #FFFFFF;
+}
+
+.disabledLink, .current {
+  pointer-events: none;
+}
+
+.disabledLink.link-primary, .disabledLink.link-primary:hover {
+  background-color: #e4e4e4;
+}
+
+.disabledLink.link-secondary, .disabledLink.link-secondary:hover{
+  background-color: #1b1b2b;
+}
+
+.current.link-primary, .current.link-primary:hover {
+  background-color: #f3f3f3;
+}
+
+.current.link-secondary, .current.link-secondary:hover {
+  background-color: #000000;
+}
+
+.link-primary:hover {
+  background-color: #dbdbdb;
+}
+
+.link-secondary:hover {
+  background-color: #212133;
+}

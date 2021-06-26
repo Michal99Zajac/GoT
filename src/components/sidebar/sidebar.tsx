@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import FilteringContext from '../../context/filtering-context';
 import ThemeContext from '../../context/theme-context';
 import { Textfield, Select, Radio } from '../input/input';
@@ -19,26 +20,47 @@ interface SidebarProps {
 export default function Sidebar(props: SidebarProps): JSX.Element {
   const filter = useContext(FilteringContext);
   const theme = useContext(ThemeContext);
+  const history = useHistory();
+
+  function onKeyUp(e: React.KeyboardEvent) {
+    let timer;
+    clearInterval(timer);
+    timer = setTimeout(() => {
+      history.push('/characters/page/1')
+    }, 1000)
+  }
+
+  useEffect(() => {
+    window.localStorage.setItem('filter', JSON.stringify({
+      culture: filter.culture,
+      gender: filter.gender,
+      pagination: filter.pagination
+    }))
+  }, [filter.culture, filter.gender, filter.pagination])
 
   return (
-    <div className={`${styles.sidebar} ${styles[`s-${theme.theme}`]} ${props.className && ''}`}>
+    <div className={`${styles.sidebar} ${styles[`s-${theme.theme}`]} ${props.className ?? ''}`}>
       <Textfield
         className={styles.bottomMargin}
         value={filter.culture}
         onChange={e => filter.setCulture(e.target.value)}
         label='culture'
         placeholder='culture'
+        onKeyUp={e => onKeyUp(e)}
       />
       <Select
         label='gender'
         className={styles.bottomMargin}
         value={filter.gender}
-        onChange={e => filter.setGender(e.target.value)}
+        onChange={e => {
+          history.push('/characters/page/1')
+          filter.setGender(e.target.value)
+        }}
         name='gender'
         options={[
           { id: '1', value: 'any' },
           { id: '2', value: 'male' },
-          { id: '3', value: 'famale' }
+          { id: '3', value: 'female' }
         ]}
       />
       <Radio

@@ -18,13 +18,16 @@ function App() {
   const body = (
     <Switch>
       <Route path='/houses/:id' component={Houses} />
-      <Route exact path='/' component={Characters}/>
+      <Route exact path='/characters/page/:page' component={Characters}/>
       <Route component={NotFound} />
     </Switch>
   );
   const navbar = (
     <Navbar logo={<Logo to='/'/>}>
-      <Toggle onChange={() => dispatch({ ...state, type: 'SET_THEME' })} />
+      <Toggle
+        defaultValue={state.theme === 'primary' ? true : false}
+        onChange={() => dispatch({ ...state, type: 'SET_THEME' })}
+      />
     </Navbar>
   );
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 
 interface FilteringContext {
-  gender: 'any' | 'male' | 'famale';
+  gender: 'any' | 'male' | 'female';
   culture: string;
   pagination: string;
   setGender: Function;
