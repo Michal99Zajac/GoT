@@ -37,7 +37,7 @@ export default function Characters(props: CharactersProps): JSX.Element {
   const filter = useContext(FilteringContext);
   const theme = useContext(ThemeContext);
   const history = useHistory();
-  const { page } = useParams<{ page: string }>();
+  let { page } = useParams<{ page: string }>();
 
   /**
    * fetch characters by page, pageSize, gender and culture
@@ -74,7 +74,7 @@ export default function Characters(props: CharactersProps): JSX.Element {
 
   useEffect(() => {
     fetchCharacters();
-  }, [filter.culture, filter.gender, filter.pagination])
+  }, [filter.culture, filter.gender, filter.pagination, history.location.pathname])
 
   return (
     <div id={props.id} className={`${styles.characters} ${props.className ?? ''}`}>

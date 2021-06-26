@@ -1,9 +1,10 @@
 import React, { useReducer, useEffect } from 'react';
 import FilteringContext from '../../context/filtering-context';
+import NavContext from '../../context/nav-context';
 import Sidebar from '../../components/sidebar/sidebar';
 import CharactersTable from '../../components/characters/characters';
 import Pagination from '../../components/pagination/pagination';
-import { reducer, initialState } from './reducer';
+import { reducer, initialState, Nav } from './reducer';
 
 
 /**
@@ -22,11 +23,29 @@ export default function Characters(): JSX.Element {
       setPagination: (pagination: '10' | '25' | '50') => 
         dispatch({...state, type: 'SET_PAGINATION', pagination: pagination})
     }}>
-      <div className='fill-all characters-page'>
-        <Sidebar className='grid-sidebar' />
-        <CharactersTable className='grid-characters' />
-        <Pagination className='grid-pagination' />
-      </div>
+      <NavContext.Provider value={{
+        nav: {
+          first: state.nav.first,
+          next: state.nav.first,
+          previous: state.nav.previous,
+          last: state.nav.last,
+          current: state.nav.current
+        },
+        setNav: (nav: Nav) => dispatch({...state, type: 'SET_NAV', nav: nav})
+      }}>
+        <div className='fill-all characters-page'>
+          <Sidebar className='grid-sidebar' />
+          <CharactersTable className='grid-characters' />
+          <Pagination
+            last={state.nav.last}
+            previous={state.nav.previous}
+            next={state.nav.next}
+            first={state.nav.first}
+            current={state.nav.current}
+            className='grid-pagination'
+          />
+        </div>
+      </NavContext.Provider>
     </FilteringContext.Provider>
   );
 }

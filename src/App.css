@@ -39,6 +39,9 @@
 
 .grid-pagination {
   grid-area: pagination;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 a {
