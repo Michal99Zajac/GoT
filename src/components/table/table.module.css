@@ -49,12 +49,19 @@
   height: 100%;
   display: flex;
   align-items: center;
+  align-content: center;
   justify-content: center;
   font-family: 'Cardo';
-  padding: 0.2rem;
-  min-width: 12rem;
-  max-width: 15rem;
+  padding: 0.2rem 0.4rem;
+  min-width: 10rem;
+  max-width: 13rem;
   box-sizing: border-box;
+  overflow: auto;
+  text-align: center;
+}
+
+.column::-webkit-scrollbar {
+  display: none;
 }
 
 .row-primary {

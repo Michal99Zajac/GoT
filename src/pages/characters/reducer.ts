@@ -1,6 +1,6 @@
 export interface State {
   culture: string;
-  gender: 'any' | 'male' | 'famale';
+  gender: 'any' | 'male' | 'female';
   pagination: '10' | '25' | '50';
   page: string;
 }

@@ -38,7 +38,7 @@ export default function Sidebar(props: SidebarProps): JSX.Element {
         options={[
           { id: '1', value: 'any' },
           { id: '2', value: 'male' },
-          { id: '3', value: 'famale' }
+          { id: '3', value: 'female' }
         ]}
       />
       <Radio

@@ -1,12 +1,14 @@
-export interface Character {
+export interface Allegiance {
+  id: string;
   name: string;
-  alive: 'yes' | 'No' | 'Unknown';
+}
+export interface Character {
+  id: string;
+  name: string;
+  alive: 'Yes' | 'No' | 'Unknown' | string;
   gender: string;
   culture: string;
-  allegiances: {
-    id: string,
-    name: string
-  }[];
+  allegiances: Allegiance[] | string;
 }
 
 export interface State {

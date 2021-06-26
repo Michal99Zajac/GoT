@@ -18,11 +18,11 @@ export default function Characters(): JSX.Element {
       culture: state.culture,
       pagination: state.pagination,
       setCulture: (culture: string) => dispatch({...state, type: 'SET_CULTURE', culture: culture}),
-      setGender: (gender: 'any' | 'male' | 'famale') => dispatch({...state, type: 'SET_GENDER', gender: gender}),
+      setGender: (gender: 'any' | 'male' | 'female') => dispatch({...state, type: 'SET_GENDER', gender: gender}),
       setPagination: (pagination: '10' | '25' | '50') => 
         dispatch({...state, type: 'SET_PAGINATION', pagination: pagination})
     }}>
-      
+
       <div className='fill-all characters-page'>
         <Sidebar className='grid-sidebar' />
         <CharactersTable className='grid-characters' />
