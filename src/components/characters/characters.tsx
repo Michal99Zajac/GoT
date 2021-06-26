@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useReducer } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import FilteringContext from '../../context/filtering-context';
 import ThemeContext from '../../context/theme-context';
+import NavContext from '../../context/nav-context';
 import axios from '../../axios';
 import Table from '../table/table';
 import Row from '../table/row/row';
 import { calcAlive } from '../../helpers/calc-alive';
-import { reducer, initialState } from './reducer'
+import { parseLink } from '../../helpers/parse-link';
+import { reducer, initialState } from './reducer';
 import styles from './characters.module.css';
 
 
@@ -36,8 +38,13 @@ export default function Characters(props: CharactersProps): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState);
   const filter = useContext(FilteringContext);
   const theme = useContext(ThemeContext);
+  const nav = useContext(NavContext)
   const history = useHistory();
   let { page } = useParams<{ page: string }>();
+
+  function setNav(linkHeader: string) {
+    parseLink(linkHeader);
+  }
 
   /**
    * fetch characters by page, pageSize, gender and culture
@@ -50,6 +57,14 @@ export default function Characters(props: CharactersProps): JSX.Element {
         `/characters?page=${page}&pageSize=${filter.pagination}&gender=${filter.gender}&culture=${filter.culture}`
       );
 
+      /**
+       * sets the nav object for the navigation table
+       */
+      setNav(res.headers.link);
+
+      /**
+       * filter all data for app data preferences
+       */
       const characters = res.data.map(c => ({
         id: c.url.split('/').pop() ?? '',
         name: [...c.aliases, c.name].filter(e => e !== '').join(', '),
@@ -59,6 +74,9 @@ export default function Characters(props: CharactersProps): JSX.Element {
         allegiances: c.allegiances.length == 0 ? 'No allegiances' : c.allegiances.map(a => `${a.split('/').pop()}`)
       }));
   
+      /**
+       * set filtered data
+       */
       dispatch({
         ...state,
         type: 'SET_CHARACTERS',
