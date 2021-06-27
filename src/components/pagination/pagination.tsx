@@ -5,7 +5,7 @@ import ThemeContext from '../../context/theme-context';
 import styles from './pagination.module.css';
 
 
-interface PaginationProps {
+export interface PaginationProps {
   className?: string;
   id?: string;
   next?: string;
@@ -26,7 +26,7 @@ interface PaginationProps {
  * - previous? (string) - number of previous page
  * - first? (string) - number of first page
  * - last? (string) - number of last page
- * - path (string) - path to page redirection
+ * - path (string) - path to page redirection without forward slash on start and end
  */
 export default function Pagination(props: PaginationProps): JSX.Element {
   const theme = useContext(ThemeContext);
@@ -34,23 +34,23 @@ export default function Pagination(props: PaginationProps): JSX.Element {
   return (
     <div id={props.id} className={clsx(styles.pagination, props.className)}>
       <Link
-        className={`${styles.link} ${!props.first ? styles.disabledLink : ''} ${styles[`link-${theme.theme}`]}`}
+        className={clsx(styles.link, !props.first && styles.disabledLink, styles[`link-${theme.theme}`])}
         to={`/${props.path}/${props.first}`}>
         first
       </Link>
       <Link
-        className={`${styles.link} ${!props.previous ? styles.disabledLink : ''} ${styles[`link-${theme.theme}`]}`}
+        className={clsx(styles.link, !props.previous && styles.disabledLink, styles[`link-${theme.theme}`])}
         to={`/${props.path}/${props.previous}`}>
         previous
       </Link>
-      <span className={`${styles.link} ${styles.current} ${styles[`link-${theme.theme}`]}`}>{props.current}</span>
+      <span className={clsx(styles.link, styles.current, styles[`link-${theme.theme}`])}>{props.current}</span>
       <Link
-        className={`${styles.link} ${!props.next ? styles.disabledLink : ''} ${styles[`link-${theme.theme}`]}`}
+        className={clsx(styles.link, !props.next && styles.disabledLink, styles[`link-${theme.theme}`])}
         to={`/${props.path}/${props.next}`}>
         next
       </Link>
       <Link
-        className={`${styles.link} ${!props.last ? styles.disabledLink : ''} ${styles[`link-${theme.theme}`]}`}
+        className={clsx(styles.link, !props.last && styles.disabledLink, styles[`link-${theme.theme}`])}
         to={`/${props.path}/${props.last}`}>
         last
       </Link>
