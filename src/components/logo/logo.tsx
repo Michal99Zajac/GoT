@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import { ReactComponent as LogoSvg } from '../../assets/svg/logo.svg';
 import './logo.css';
@@ -22,7 +23,7 @@ interface LogoProps {
 export default function Logo(props: LogoProps): JSX.Element {
   return (
     <Link
-      className={`logo ${props.className ?? ''}`}
+      className={clsx('logo', props.className)}
       id={props.id}
       to={props.to}
     >

@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import styles from './navbar.module.css';
 
 
@@ -20,7 +21,7 @@ interface NavbarProps {
 export default function Navbar(props: NavbarProps): JSX.Element {
   return (
     <header
-      className={`${styles.navbar} ${props.className ?? ''}`}
+      className={clsx(styles.navbar, props.className)}
       id={props.id}
     >
       <span className={styles.logo}>

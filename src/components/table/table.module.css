@@ -126,6 +126,10 @@
   max-width: fit-content;
 }
 
+a {
+  text-decoration: none;
+} 
+
 @keyframes load-primary {
   0% { background-color: #EDEDED; }
   50% { background-color: #cccccc; }
@@ -136,4 +140,10 @@
   0% { background-color: #3D3D47; }
   50% { background-color: #56565e; }
   100% { background-color: #3D3D47; }
+}
+
+@media only screen and (max-width: 800px) {
+  .table-horizontal .column {
+    min-height: 6rem;
+  }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import styles from './layout.module.css';
 
 
@@ -20,7 +21,7 @@ interface MainLayoutProps {
 export function MainLayout(props: MainLayoutProps): JSX.Element {
   return (
     <div
-      className={`${styles.layout} ${props.className ?? ''}`}
+      className={clsx(styles.layout, props.className)}
       id={props.id}
     >
       <div className={styles.navbar}>{props.navbar}</div>

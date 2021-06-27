@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useReducer } from 'react';
+import clsx from 'clsx';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import FilteringContext from '../../context/filtering-context';
 import ThemeContext from '../../context/theme-context';
@@ -82,7 +83,7 @@ export default function Characters(props: CharactersProps): JSX.Element {
         alive: calcAlive(c.born, c.died),
         gender: c.gender,
         culture: c.culture === '' ? 'Unknown' : c.culture,
-        allegiances: c.allegiances.length == 0 ? 'No allegiances' : c.allegiances.map(a => `${a.split('/').pop()}`)
+        allegiances: c.allegiances.length === 0 ? 'No allegiances' : c.allegiances.map(a => `${a.split('/').pop()}`)
       }));
   
       /**
@@ -106,22 +107,23 @@ export default function Characters(props: CharactersProps): JSX.Element {
   }, [filter.culture, filter.gender, filter.pagination, history.location.pathname])
 
   return (
-    <div id={props.id} className={`${styles.characters} ${props.className ?? ''}`}>
+    <div id={props.id} className={clsx(styles.characters, props.className)}>
       <Table
         loading={state.loading}
         className={styles.table}
         columns={['character', 'alive', 'gender', 'culture', 'allegiances']}
       >
-        { state.characters.map(c => (
+        { state.characters.map(row => (
           <Row
+            key={JSON.stringify(row)}
             data={[
-              c.name,
-              c.alive,
-              c.gender,
-              c.culture,
+              row.name,
+              row.alive,
+              row.gender,
+              row.culture,
               <ul className={styles.ul}>
-                { !Array.isArray(c.allegiances) ? <li>{c.allegiances}</li> : c.allegiances.map(a => (
-                  <Link key={`house-${c.id}-${a}`} className={styles[`link-${theme.theme}`]} to={`/houses/${a}`}><li># {a}</li></Link>
+                { !Array.isArray(row.allegiances) ? <li>{row.allegiances}</li> : row.allegiances.map(item => (
+                  <Link key={`house-${row.id}-${item}`} className={styles[`link-${theme.theme}`]} to={`/houses/${item}`}><li># {item}</li></Link>
                 ))}
               </ul>
             ]}

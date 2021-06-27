@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import clsx from 'clsx';
 import ThemeContext from '../../context/theme-context';
 import { ReactComponent as ArrowSvg } from '../../assets/svg/arrow.svg';
 import styles from './input.module.css';
@@ -57,7 +58,7 @@ export function Textfield(props: TextfieldProps): JSX.Element {
 
   return (
     <div
-      className={`${styles.inputDiv} ${props.className ?? ''}`}
+      className={clsx(styles.inputDiv, props.className)}
       id={props.id}
     >
       <input
@@ -97,39 +98,39 @@ export function Select(props: SelectProps): JSX.Element {
 
   return (
     <div
-      className={`${styles.inputDiv} ${props.className ?? ''}`}
+      className={clsx(styles.inputDiv, props.className)}
       id={props.id}
     >
-    <button
-      onClick={() => setIsOpen(!isOpen)}
-      className={`${styles.select} ${styles.input} ${styles[`input-${theme.theme}`]}`}
-    >
-      {props.value}
-      <ArrowSvg className={`${styles.arrow} ${isOpen ? styles.arrowUp : styles.arrowDown}`} />
-      <div className={`${styles.options} ${styles[`options-${theme.theme}`]} ${!isOpen ? styles.optionsHide : ''}`}>
-        { props.options.map(option => (
-          <>
-            <input
-              defaultChecked={option.value === props.value}
-              type='radio'
-              onChange={props.onChange}
-              name={props.name}
-              id={`${option.id}-${props.name}`}
-              value={option.value}
-            />
-            <label
-              className={`${styles.opt} ${styles[`opt-${theme.theme}`]}`}
-              htmlFor={`${option.id}-${props.name}`}
-            >{option.value}</label>
-          </>
-        )) }
-      </div>
-    </button>
-    { props.label &&
-      <label className={`${styles.label} ${styles[`label-${theme.theme}`]}`}>
-        {props.label}
-      </label>
-    }
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className={clsx(styles.select, styles.input, styles[`input-${theme.theme}`])}
+      >
+        {props.value}
+        <ArrowSvg className={`${styles.arrow} ${isOpen ? styles.arrowUp : styles.arrowDown}`} />
+        <div className={`${styles.options} ${styles[`options-${theme.theme}`]} ${!isOpen ? styles.optionsHide : ''}`}>
+          { props.options.map(option => (
+            <React.Fragment key={`${option.value}-${option.id}`}>
+              <input
+                defaultChecked={option.value === props.value}
+                type='radio'
+                onChange={props.onChange}
+                name={props.name}
+                id={`${option.id}-${props.name}`}
+                value={option.value}
+              />
+              <label
+                className={`${styles.opt} ${styles[`opt-${theme.theme}`]}`}
+                htmlFor={`${option.id}-${props.name}`}
+              >{option.value}</label>
+            </React.Fragment>
+          )) }
+        </div>
+      </button>
+      { props.label &&
+        <label className={`${styles.label} ${styles[`label-${theme.theme}`]}`}>
+          {props.label}
+        </label>
+      }
     </div>
   );
 }
@@ -153,12 +154,12 @@ export function Radio(props: RadioProps): JSX.Element {
 
   return (
     <div
-      className={`${styles.inputDiv} ${props.className ?? ''}`}
+      className={clsx(styles.inputDiv, props.className)}
       id={props.id}
     >
     <div className={`${styles.radios}`}>
       { props.options.map(option => (
-        <>
+        <React.Fragment key={`${option.value}-${option.id}`}>
           <input
             defaultChecked={option.value === props.value}
             type='radio'
@@ -171,7 +172,7 @@ export function Radio(props: RadioProps): JSX.Element {
             className={`${styles.radio} ${styles[`radio-${theme.theme}`]}`}
             htmlFor={`${option.id}-${props.name}`}
           >{option.value}</label>
-        </>
+        </React.Fragment>
       )) }
     </div>
     { props.label &&

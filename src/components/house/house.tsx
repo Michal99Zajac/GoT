@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import clsx from 'clsx';
 import { useParams } from 'react-router-dom';
 import axios from '../../axios';
 import HouseContext from '../../context/house-context';
@@ -75,7 +76,7 @@ export default function House(props: HouseProps): JSX.Element {
   return (
     <Table
       loading={house.loading}
-      className={styles.table}
+      className={clsx(styles.table, props.className)}
       direction='horizontal'
       columns={
         ['region', 'words', 'titles', 'seats', 'has died out',

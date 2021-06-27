@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+.toggle:hover {
+  cursor: pointer;
+}
+
 .toggle-on {
   background-color: #303440;
   justify-content: flex-start;
