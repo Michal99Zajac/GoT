@@ -31,7 +31,7 @@ export const reducer = (state: State, action: Action) => {
 }
 
 export const initialState: State = {
-  loading: true,
+  loading: false,
   house: {
     name: '',
     region: '',
