@@ -22,14 +22,20 @@ export default function Sidebar(props: SidebarProps): JSX.Element {
   const theme = useContext(ThemeContext);
   const history = useHistory();
 
+  /**
+   * redirect page after 2s on last key up in culture input
+   */
   function onKeyUp(e: React.KeyboardEvent) {
     let timer;
     clearInterval(timer);
     timer = setTimeout(() => {
       history.push('/characters/page/1')
-    }, 1000)
+    }, 2000)
   }
 
+  /**
+   * any change save to the browser storage
+   */
   useEffect(() => {
     window.localStorage.setItem('filter', JSON.stringify({
       culture: filter.culture,

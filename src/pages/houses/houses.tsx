@@ -3,15 +3,18 @@ import { useHistory } from 'react-router-dom';
 import ThemeContext from '../../context/theme-context';
 import HouseContext from '../../context/house-context';
 import House from '../../components/house/house';
-import { ReactComponent as ArrowSvg } from '../../assets/svg/arrow.svg'
+import { ReactComponent as ArrowSvg } from '../../assets/svg/arrow.svg';
 import { reducer, initialState, House as HouseType } from './reducer';
 import './houses.css';
 
 
+/**
+ * House Page for displaying specific data about house
+ */
 export default function Houses() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const theme = useContext(ThemeContext);
-  const history = useHistory()
+  const history = useHistory();
 
   return (
     <HouseContext.Provider value={{

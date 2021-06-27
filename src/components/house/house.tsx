@@ -38,10 +38,14 @@ export default function House(props: HouseProps): JSX.Element {
     house.setLoading(true);
 
     try {
+      /**
+       * fetch data by house id
+       */
       const res = await axios.get<RawHouse>(`/houses/${id}`);
 
-      console.log(res.data);
-
+      /**
+       * filter data and set house context
+       */
       house.setHouse({
         name: res.data.name,
         region: res.data.region === '' ? 'Unknown' : res.data.region,
@@ -61,6 +65,9 @@ export default function House(props: HouseProps): JSX.Element {
     house.setLoading(false);
   };
 
+  /**
+   * fetch data only once
+   */
   useEffect(() => {
     fetchHouse();
   }, [])

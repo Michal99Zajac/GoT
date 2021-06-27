@@ -43,6 +43,7 @@ export default function Characters(): JSX.Element {
               next={state.nav.next}
               first={state.nav.first}
               current={state.nav.current}
+              path='characters/page'
             />
           </div>
         </div>
