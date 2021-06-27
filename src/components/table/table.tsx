@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import clsx from 'clsx';
 import ThemeContext from '../../context/theme-context';
+import { directionWrap } from '../../hoc/direction-wrap';
 import styles from './table.module.css';
 
 
@@ -33,7 +34,7 @@ export default function Table(props: TableProps): JSX.Element {
         styles[`table-${props.direction ? props.direction : 'vertical'}`])}
     >
       <div className={`${styles.header} ${styles.row}`}>
-        { props.columns.map((c, idx) => <span key={idx} className={styles.column}>{c}</span>) }
+        { props.columns.map((c, idx) => directionWrap(<span key={idx} className={styles.column}>{c}</span>, props.direction)) }
       </div>
       <div className={styles.data}>
         { loading ? <div className={styles[`loading-${theme.theme}`]}></div> : props.children }
