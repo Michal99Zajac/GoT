@@ -24,7 +24,7 @@
   grid-template-columns: 20% calc(80% - 1rem);
   grid-template-rows: 1fr 5rem;
   grid-template-areas: "sidebar characters" "sidebar pagination";
-  column-gap: 1rem;
+  column-gap: 16px;
 }
 
 .houses-page {
@@ -33,7 +33,7 @@
   grid-template-columns: minmax(min-content, 40%) minmax(min-content, calc(60% - 1rem));
   grid-template-rows: 1fr;
   grid-template-areas: "arms house";
-  column-gap: 1rem;
+  column-gap: 16px;
 }
 
 .grid-arms {
@@ -86,4 +86,29 @@ a {
 
 .h1-not-found-secondary {
   color: #FFFFFF;
+}
+
+@media only screen and (max-width: 800px) {
+  html {
+    font-size: 14px;
+  }
+
+  .characters-page {
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "sidebar" "characters" "pagination";
+    column-gap: 0;
+  }
+
+  .grid-pagination {
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .houses-page {
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    grid-template-areas: "house" "arms";
+    column-gap: 0;
+  }
 }

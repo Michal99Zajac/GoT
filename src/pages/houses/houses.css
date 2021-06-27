@@ -94,3 +94,22 @@
     opacity: 1;
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .arms-h1 {
+    font-size: 2rem;
+    height: 100%;
+    width: 100%;
+    overflow: unset;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .house-name {
+    text-align: right;
+  }
+
+  .house {
+    padding: 1rem;
+  }
+}

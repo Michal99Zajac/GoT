@@ -17,8 +17,7 @@ export default function NotFound() {
     const snowflakes = document.querySelectorAll('.snowflake');
 
     snowflakes.forEach(s => {
-      const delayOne = Math.floor(Math.random() * 20);
-      const delayTwo = Math.floor(Math.random() * 20);
+      const delayOne = Math.random() * 20;
       const left = Math.floor(Math.random() * 100);
 
       s.setAttribute('style', `left: ${left}%;

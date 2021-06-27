@@ -137,3 +137,9 @@
   50% { background-color: #56565e; }
   100% { background-color: #3D3D47; }
 }
+
+@media only screen and (max-width: 800px) {
+  .table-horizontal .column {
+    min-height: 6rem;
+  }
+}
