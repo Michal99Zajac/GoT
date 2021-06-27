@@ -118,6 +118,7 @@
 
 .table-horizontal .column {
   font-size: 2rem;
+  overflow: inherit;
 }
 
 @keyframes load-primary {
