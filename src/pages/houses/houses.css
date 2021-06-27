@@ -1,0 +1,96 @@
+.arms-h1 {
+  font-size: 5rem;
+  font-family: 'Cardo';
+  margin: 0;
+  padding: 2rem;
+  box-sizing: border-box;
+  height: 100%;
+  max-height: calc(100vh - 3.4rem);
+  overflow: auto;
+  animation: text-show 2s ease-in;
+}
+
+.arms-h1::-webkit-scrollbar {
+  display: none;
+}
+
+.text-primary {
+  color: #000000;
+}
+
+.text-secondary {
+  color: #FFFFFF;
+}
+
+.p-loading-primary, .p-loading-secondary {
+  height: 4rem;
+  width: 20rem;
+  display: block;
+}
+
+.p-loading-primary { animation: load-primary ease-in-out 2s infinite; }
+
+.p-loading-secondary { animation: load-secondary ease-in-out 2s infinite; }
+
+.house {
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  min-width: min-content;
+  flex-direction: column;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.back-arrow {
+  transform: rotate(90deg);
+  transition: all 0.2s;
+  width: 2rem;
+  height: 2rem;
+}
+
+.back-arrow > path {
+  fill: #A6A6AA;
+}
+
+.back-arrow:hover {
+  transform: rotate(90deg) translateY(0.2rem);
+  cursor: pointer;
+}
+
+.house-name {
+  margin: 0;
+  font-size: 3rem;
+  font-family: 'Cardo';
+}
+
+@keyframes load-primary {
+  0% { background-color: #EDEDED; }
+  50% { background-color: #cccccc; }
+  100% { background-color: #EDEDED; }
+}
+
+@keyframes load-secondary {
+  0% { background-color: #3D3D47; }
+  50% { background-color: #56565e; }
+  100% { background-color: #3D3D47; }
+}
+
+@keyframes text-show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

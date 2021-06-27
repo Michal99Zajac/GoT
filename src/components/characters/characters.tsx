@@ -54,7 +54,7 @@ export default function Characters(props: CharactersProps): JSX.Element {
       previous: newNav.previous,
       last: newNav.last,
       first: newNav.first
-    })
+    });
   }
 
   /**

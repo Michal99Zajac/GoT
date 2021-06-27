@@ -10,6 +10,9 @@ interface FilteringContext {
   setPagination: Function;
 }
 
+/**
+ * Filtering Context for data flow for any changes in user preferences
+ */
 const filteringContext = React.createContext<FilteringContext>({
   gender: 'any',
   culture: '',

@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { MainLayout } from './components/layout/layout';
 import Navbar from './components/navbar/navbar';
 import Toggle from './components/toggle/toggle';
@@ -17,6 +17,7 @@ function App() {
 
   const body = (
     <Switch>
+      <Redirect exact from='/' to='/characters/page/1' />
       <Route path='/houses/:id' component={Houses} />
       <Route exact path='/characters/page/:page' component={Characters}/>
       <Route component={NotFound} />

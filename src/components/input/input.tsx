@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ThemeContext from '../../context/theme-context';
 import { ReactComponent as ArrowSvg } from '../../assets/svg/arrow.svg';
 import styles from './input.module.css';

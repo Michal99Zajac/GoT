@@ -1,3 +1,10 @@
+/**
+ * calc characters alive status
+ * 
+ * @param born information about born
+ * @param died information about died
+ * @returns character alive status
+ */
 export function calcAlive(born: string, died: string): string {
   if (born === '' && died === '') {
     return 'Unknown';

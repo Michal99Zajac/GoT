@@ -27,6 +27,23 @@
   column-gap: 1rem;
 }
 
+.houses-page {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(min-content, 40%) minmax(min-content, calc(60% - 1rem));
+  grid-template-rows: 1fr;
+  grid-template-areas: "arms house";
+  column-gap: 1rem;
+}
+
+.grid-arms {
+  grid-area: arms;
+}
+
+.grid-house {
+  grid-area: house;
+}
+
 .grid-sidebar {
   grid-area: sidebar;
 }
@@ -46,10 +63,4 @@
 
 a {
   text-decoration: none;
-}
-
-@keyframes blizzard {
-  0% { background-position: 0% 0%; }
-  50% { background-position: 100% 0%; }
-  100% { background-position: 0% 0% ; }
 }
