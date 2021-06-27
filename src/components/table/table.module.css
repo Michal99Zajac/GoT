@@ -121,9 +121,13 @@
 .table-horizontal .column {
   font-size: 2rem;
   min-width: 0;
+  max-height: 7rem;
   width: 100%;
   line-height: 100%;
   max-width: fit-content;
+  display: block;
+  height: auto;
+  width: auto;
 }
 
 a {
@@ -144,6 +148,6 @@ a {
 
 @media only screen and (max-width: 800px) {
   .table-horizontal .column {
-    min-height: 6rem;
+    font-size: 1.2rem;
   }
 }

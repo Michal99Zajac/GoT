@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import clsx from 'clsx';
 import ThemeContext from '../../../context/theme-context';
+import { directionWrap } from '../../../hoc/direction-wrap';
 import styles from '../table.module.css';
 
 
@@ -8,6 +9,7 @@ interface RowProps {
   className?: string;
   id?: string;
   data: any[];
+  direction?: 'vertical' | 'horizontal';
 }
 
 /**
@@ -25,7 +27,7 @@ export default function Row(props: RowProps): JSX.Element {
       id={props.id}
       className={clsx(styles.row, props.className, styles[`row-${theme.theme}`])}
     >
-      { props.data.map((column, idx) => <span key={`${column}-${idx}`} className={styles.column} >{column}</span>) }
+      { props.data.map((column, idx) => directionWrap(<span key={`${column}-${idx}`} className={styles.column} >{column}</span>, props.direction)) }
     </div>
   )
 }

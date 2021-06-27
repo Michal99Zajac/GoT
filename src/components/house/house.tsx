@@ -83,7 +83,7 @@ export default function House(props: HouseProps): JSX.Element {
           'has overlord', 'number of cadet branches']
       }
     >
-      <Row data={[
+      <Row direction='horizontal' data={[
         house.house.region,
         house.house.words,
         house.house.titles,
