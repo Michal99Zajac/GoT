@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import clsx from 'clsx';
 import ThemeContext from '../../context/theme-context';
 import styles from './table.module.css';
 
@@ -28,8 +29,8 @@ export default function Table(props: TableProps): JSX.Element {
   return (
     <div
       id={props.id}
-      className={`${styles.table} ${props.className ?? ''} ${styles[`table-${theme.theme}`]} \
-       ${styles[`table-${props.direction ? props.direction : 'vertical'}`]}`}
+      className={clsx(styles.table, props.className, styles[`table-${theme.theme}`],
+        styles[`table-${props.direction ? props.direction : 'vertical'}`])}
     >
       <div className={`${styles.header} ${styles.row}`}>
         { props.columns.map((c, idx) => <span key={idx} className={styles.column}>{c}</span>) }

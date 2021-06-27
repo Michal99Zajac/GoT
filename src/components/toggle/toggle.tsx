@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import clsx from 'clsx';
 import styles from './toggle.module.css';
 
 
@@ -28,7 +29,7 @@ export default function Toggle(props: ToggleProps): JSX.Element {
     <div
       onClick={onClick}
       id={props.id}
-      className={`${styles.toggle} ${styles[`toggle-${isOn ? 'on' : 'off'}`]} ${props.className ?? ''}`}
+      className={clsx(styles.toggle, styles[`toggle-${isOn ? 'on' : 'off'}`], props.className)}
     >
       <span className={styles.toggleButton}></span>
     </div>

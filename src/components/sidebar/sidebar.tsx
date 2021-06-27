@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
+import clsx from 'clsx';
 import { useHistory } from 'react-router-dom';
 import FilteringContext from '../../context/filtering-context';
 import ThemeContext from '../../context/theme-context';
@@ -45,7 +46,7 @@ export default function Sidebar(props: SidebarProps): JSX.Element {
   }, [filter.culture, filter.gender, filter.pagination])
 
   return (
-    <div className={`${styles.sidebar} ${styles[`s-${theme.theme}`]} ${props.className ?? ''}`}>
+    <div className={clsx(styles.sidebar, styles[`s-${theme.theme}`], props.className)}>
       <Textfield
         className={styles.bottomMargin}
         value={filter.culture}

@@ -16,6 +16,9 @@ export default function Houses() {
   const theme = useContext(ThemeContext);
   const history = useHistory();
 
+
+  // TODO: coatOfArms schould be replaced by image for better presentation
+
   return (
     <HouseContext.Provider value={{
       house: state.house,

@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer } from 'react';
 import FilteringContext from '../../context/filtering-context';
 import NavContext from '../../context/nav-context';
 import Sidebar from '../../components/sidebar/sidebar';

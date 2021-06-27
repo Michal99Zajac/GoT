@@ -65,6 +65,10 @@
   position: relative;
 }
 
+.select:hover {
+  cursor: pointer;
+}
+
 .arrow {
   height: 100%;
   width: 0.8rem;
@@ -121,6 +125,7 @@
 }
 
 .opt-primary:hover, .radio-primary:hover {
+  cursor: pointer;
   background-color: #dddddd;
 }
 
@@ -130,6 +135,7 @@
 } 
 
 .opt-secondary:hover, .radio-secondary:hover {
+  cursor: pointer;
   background-color: #424652;
 }
 

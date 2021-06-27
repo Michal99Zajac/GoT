@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import ThemeContext from '../../context/theme-context';
 import styles from './pagination.module.css';
@@ -31,7 +32,7 @@ export default function Pagination(props: PaginationProps): JSX.Element {
   const theme = useContext(ThemeContext);
 
   return (
-    <div id={props.id} className={`${styles.pagination} ${props.className ?? ''}`}>
+    <div id={props.id} className={clsx(styles.pagination, props.className)}>
       <Link
         className={`${styles.link} ${!props.first ? styles.disabledLink : ''} ${styles[`link-${theme.theme}`]}`}
         to={`/${props.path}/${props.first}`}>

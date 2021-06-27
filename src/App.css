@@ -21,7 +21,7 @@
 
 .characters-page {
   display: grid;
-  grid-template-columns: 20% calc(80% - 1rem);
+  grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr 5rem;
   grid-template-areas: "sidebar characters" "sidebar pagination";
   column-gap: 16px;
@@ -30,7 +30,7 @@
 .houses-page {
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: minmax(min-content, 40%) minmax(min-content, calc(60% - 1rem));
+  grid-template-columns: 4fr 6fr;
   grid-template-rows: 1fr;
   grid-template-areas: "arms house";
   column-gap: 16px;
@@ -61,9 +61,9 @@
   justify-content: center;
 }
 
-a {
+/* a {
   text-decoration: none;
-}
+} */
 
 .not-found {
   width: 100%;
