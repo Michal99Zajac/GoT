@@ -29,7 +29,7 @@ export default function NotFound() {
 
   return (
     <div className='fill-all not-found'>
-      <h1 className={`h1-not-found-${theme.theme}`}>400</h1>
+      <h1 className={`h1-not-found-${theme.theme}`}>404</h1>
       { snows.map((s, idx) => <span key={idx} className={`snowflake snow-${theme.theme}}`}></span>)  }
     </div>
   );

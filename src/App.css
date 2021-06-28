@@ -89,10 +89,6 @@
 }
 
 @media only screen and (max-width: 800px) {
-  html {
-    font-size: 14px;
-  }
-
   .characters-page {
     grid-template-columns: 100%;
     grid-template-rows: 1fr 1fr 1fr;

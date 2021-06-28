@@ -72,6 +72,7 @@
   margin: 0;
   font-size: 3rem;
   font-family: 'Cardo';
+  text-align: right;
 }
 
 @keyframes load-primary {

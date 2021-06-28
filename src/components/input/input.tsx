@@ -5,7 +5,7 @@ import { ReactComponent as ArrowSvg } from '../../assets/svg/arrow.svg';
 import styles from './input.module.css';
 
 
-interface TextfieldProps {
+export interface TextfieldProps {
   className?: string;
   id?: string;
   value: string;
@@ -16,7 +16,7 @@ interface TextfieldProps {
   label?: string;
 }
 
-interface SelectProps {
+export interface SelectProps {
   className?: string;
   id?: string;
   value: string;
@@ -29,7 +29,7 @@ interface SelectProps {
   }[]
 }
 
-interface RadioProps {
+export interface RadioProps {
   className?: string;
   id?: string;
   value: string;
@@ -107,7 +107,7 @@ export function Select(props: SelectProps): JSX.Element {
       >
         {props.value}
         <ArrowSvg className={`${styles.arrow} ${isOpen ? styles.arrowUp : styles.arrowDown}`} />
-        <div className={`${styles.options} ${styles[`options-${theme.theme}`]} ${!isOpen ? styles.optionsHide : ''}`}>
+        <div className={clsx(styles.options, styles[`options-${theme.theme}`], !isOpen && styles.optionsHide)}>
           { props.options.map(option => (
             <React.Fragment key={`${option.value}-${option.id}`}>
               <input
