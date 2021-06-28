@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import styles from './toggle.module.css';
 
 
-interface ToggleProps {
+export interface ToggleProps {
   className?: string;
   id?: string;
   defaultValue?: boolean;
