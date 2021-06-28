@@ -11,7 +11,16 @@ import { reducer, initialState, Nav } from './reducer';
  * Characters page
  */
 export default function Characters(): JSX.Element {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState, (initState) => {
+    const filter = JSON.parse(window.localStorage.getItem('filter') ?? '{}')
+
+    return {
+      ...initState,
+      culture: filter.culture ?? '',
+      gender: filter.gender ?? 'any',
+      pagination: filter.pagination ?? '25'
+    };
+  });
 
   return (
     <FilteringContext.Provider value={{

@@ -96,6 +96,11 @@ export function Select(props: SelectProps): JSX.Element {
   const theme = useContext(ThemeContext);
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleOptionClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    props.onChange(e);
+    setIsOpen(false);
+  };
+
   return (
     <div
       className={clsx(styles.inputDiv, props.className)}
@@ -113,7 +118,7 @@ export function Select(props: SelectProps): JSX.Element {
               <input
                 defaultChecked={option.value === props.value}
                 type='radio'
-                onChange={props.onChange}
+                onChange={handleOptionClick}
                 name={props.name}
                 id={`${option.id}-${props.name}`}
                 value={option.value}
