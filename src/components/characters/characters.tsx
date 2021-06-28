@@ -18,7 +18,7 @@ interface CharactersProps {
   id?: string
 }
 
-interface RawCharacter {
+export interface RawCharacter {
   url: string;
   aliases: string[];
   allegiances: string[];

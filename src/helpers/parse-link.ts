@@ -12,6 +12,15 @@ interface ParsedLink {
  * Function parse link header for js object
  */
 export function parseLink(linkHeader: string): ParsedLink {
+  if (linkHeader === '') {
+    return {
+      next: undefined,
+      previous: undefined,
+      last: undefined,
+      first: undefined
+    }
+  }
+
   const links = linkHeader.split(',').map(link => link.split(';'));
   let nav: any = {};
   
